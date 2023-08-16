@@ -1,0 +1,22 @@
+						MCU回码
+握手成功：    	11  11  00  VERSION(4bytes)  CRC_L  CRC_H
+握手失败：    	11  11  01  CRC_L  CRC_H
+CRC校验失败：	11  11  02  CRC_L  CRC_H
+等待IAP：    	11  11  03  CRC_L  CRC_H
+程序地址错误：         11  11  04  CRC_L  CRC_H
+
+IAP成功：                 11  11  06  VERSION(4bytes)  CRC_L  CRC_H
+运行原代码:   	11  11  07  CRC_L  CRC_H
+
+
+FLASH单包写入失败：	VERSION(4bytes)   PackTotalNum   PackCurrentNum  PackRestNum   PackSize_H  PackSize_L  00  08  CRC_L  CRC_H
+FLASH单包写入成功：	VERSION(4bytes)   PackTotalNum   PackCurrentNum  PackRestNum   PackSize_H  PackSize_L  01  09  CRC_L  CRC_H
+                        
+
+打包代码
+**************************握手**************************
+上位机发送11 22 33 79 70
+
+发送打包的数据   
+ VERSION(4bytes)   PackTotalNum   PackCurrentNum  PackRestNum   PackSize_H  PackSize_L  PackData CRC_L  CRC_H
+
